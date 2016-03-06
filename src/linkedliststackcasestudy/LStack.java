@@ -2,22 +2,25 @@ package linkedliststackcasestudy;
 
 
 
-public class LStack {
+public class LStack extends StackAuditor implements IStack{
     private Node head;
-    private int pushcnt=0;
-    private int popcnt=0;
     
+    @Override
     public void push(int v){
-        head = new Node(v,head);
-        pushcnt++;
+        incrementPushCount();
+        head = new Node(v,head); 
     }
+    
+    @Override
     public int pop(){
+        incrementPopCount();
         if(head==null) return -1;
         Node t = head;
         head = head.getNext();
-        popcnt++;
         return t.getV();
     }
+    
+    @Override
     public void print(){
         System.out.println("Printing LStack");
         Node t = head;
@@ -27,13 +30,4 @@ public class LStack {
         }
     }
     
-    public int getTotalPushCount()
-    {
-        return pushcnt;
-    }
-    
-    public int getTotalPopCount()
-    {
-        return popcnt;
-    }
 }

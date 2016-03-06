@@ -1,38 +1,35 @@
 package linkedliststackcasestudy;
 
-public class AStack {
+public class AStack extends StackAuditor implements IStack{
 
-    int[] stk = new int[10];
-    int sp = 10;
-    private int validpushcnt=0;
-    private int validpopcnt=0;
-    private int pushcnt=0;
-    private int popcnt=0;
-
+    private int[] stk = new int[10];
+    private int sp = 10;
+    
+    @Override
     public void push(int v) {
+        incrementPushCount();
         if (sp == 0) {
             System.out.println("Stack Overflow");
         } else {
             sp = sp - 1;
             stk[sp] = v;
-            validpushcnt++;
         }
-        pushcnt++;
     }
 
+    @Override
     public int pop() {
+        incrementPopCount();
         int temp = -1;
         if (sp == 10) {
             System.out.println("Stack Underflow");
         } else {
             temp = stk[sp];
             sp = sp + 1;
-            validpopcnt++;
         }
-        popcnt++;
         return temp;
     }
-
+    
+    @Override
     public void print() {
         System.out.println("Printing AStack");
         if (sp == 10) {
@@ -42,35 +39,5 @@ public class AStack {
         for (int i = sp; i < 10; i++) {
             System.out.println(stk[i]);
         }
-    }
-    
-    public int getValidPushCount()
-    {
-        return validpushcnt;
-    }
-    
-    public int getValidPopCount()
-    {
-        return validpopcnt;
-    }
-    
-    public int getTotalPushCount()
-    {
-        return pushcnt;
-    }
-    
-    public int getTotalPopCount()
-    {
-        return popcnt;
-    }
-    
-    public int getFailedPushCount()
-    {
-        return (pushcnt - validpushcnt);
-    }
-    
-    public int getFailedPopCount()
-    {
-        return (popcnt-validpopcnt);
     }
 }
