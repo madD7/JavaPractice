@@ -11,10 +11,7 @@ public class Class1
 	public static void main(String[] args) 
 	{
 		System.out.println("Hello world\n");
-		
-		// Calling static method1 from class1 main
-		// method1 is static. so no instantiating 
-		method1();
+
 		Class2.method1();
 		
 		// Cant call a private method of a Class from other Class
@@ -29,6 +26,7 @@ public class Class1
 		
 		System.out.println("Leaving Class1.method1");
 	}
+
 }
 
 
