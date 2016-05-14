@@ -14,6 +14,9 @@ public class Class1
 		// method1 is static. so no instantiating 
 		method1();
 		Class2.method1();
+		
+		// Cant call a private method of a Class from other Class
+		//Class2.privateMethod1();
 	}
 	
 	static void method1()
@@ -35,6 +38,16 @@ class Class2
 	{
 		System.out.println("Entering Class2.method1");
 		
+		// a private method of a Class can be called from any method of same Class
+		privateMethod1();
+		
 		System.out.println("Leaving Class2.method1");
+	}
+	
+	static private void privateMethod1()
+	{
+		System.out.println("Entering Class2.privateMethod1");
+		
+		System.out.println("Leaving Class2.privateMethod1");
 	}
 }
