@@ -23,6 +23,8 @@ public class Class1 {
 	{
 		System.out.println("Entering newPackage Class1.method2");
 		
+		anatomyOfJava.subPackage.Class1.method1();
+		
 		System.out.println("Leaving newPackage Class1.method2");
 	}
 	

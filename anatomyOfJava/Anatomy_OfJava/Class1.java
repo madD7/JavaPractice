@@ -24,6 +24,13 @@ public class Class1
 	{
 		System.out.println("Entering Class1.method1");
 		
+		// In deployment view, sub package is nested inside parent package
+		// But is Module view, parent package can call only the public methods of sub package
+		anatomyOfJava.subPackage.Class1.method1();
+		
+		// Following method call will result to error
+		// anatomyOfJava.subPackage.Class1.method2();
+		
 		System.out.println("Leaving Class1.method1");
 	}
 
