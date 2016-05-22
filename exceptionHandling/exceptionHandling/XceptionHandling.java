@@ -37,7 +37,10 @@ class Class2
 		try {
             System.out.println("Entering try");
             a = b / c;
-            System.out.println("Leaving try");
+            
+			// The code below the line where execption occurs is not executed
+            // The flow of control jumps to the catch block & starts execution from there onwards
+            System.out.println("This line is not executed"); 
         } catch (ArithmeticException e) {
             System.out.println("Arithmetic Exception Caught ");
         }		
