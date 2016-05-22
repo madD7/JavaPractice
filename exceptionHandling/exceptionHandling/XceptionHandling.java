@@ -59,11 +59,15 @@ class Class2
 				arry[17] = 17;
 			
 			System.out.println("This line is not executed"); 
-		}catch (RuntimeException e)	// RuntimeException is parent class of exceptions
+		}catch (ArrayIndexOutOfBoundsException ar)	// specific Exception-catch block
+		{
+            System.out.println("Array-index-out-of-bounds Exception caught");
+        }
+		catch (RuntimeException e)	// general exception-catch block
 		{
             System.out.println("Some Exception caught");
         }
-		// the Parent handle of runtime Exception can catch various child class exceptions implementing parent class (Runtime)
+		// the catch are executed linearly, considering the first match as best match
 		
 		System.out.println("Some random print message ");
 		System.out.println("Leaving  Class2.method1 ");
