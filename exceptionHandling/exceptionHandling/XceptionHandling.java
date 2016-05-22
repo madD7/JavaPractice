@@ -31,8 +31,12 @@ class Class2
 {
 	static void method1()
 	{
+		int a=1, b=2, c=0;
+		
 		System.out.println("Entering  Class2.method1 ");
-       
+		
+		// Generating an Exception 
+		a = b/c;					// Divinding by zero is an Error
         System.out.println("Leaving  Class2.method1 ");
 	}
 }
