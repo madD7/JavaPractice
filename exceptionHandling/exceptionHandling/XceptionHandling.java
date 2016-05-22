@@ -21,8 +21,21 @@ class Class1
 	static void method1()
 	{
 		System.out.println("Entering  Class1.method1 ");
-         
-       	Class2.method1();
+        
+		try
+		{
+			Class2.method1();
+		}
+		// Only Arithmetic Exception will be caught here. 
+		// Array-index-out-of-bounds Exception is already caught in the function itself.
+		catch(ArithmeticException a)			
+		{
+			System.out.println("Arithematic Exception caught in Class1.method1 ");
+		}
+		finally
+		{
+			System.out.println("In Finally block of Class1.method1");
+		}
 		
         System.out.println("Leaving  Class1.method1 ");
 	}
@@ -47,13 +60,13 @@ class Class2
 		{
 			System.out.println("Entering try");
 			
-			System.out.println("Divide-by-0 Exception");
+			System.out.println("Generating Divide-by-0 Exception");
 			
 			if(flag1)
 				a = b / c;
 			
 			// Following Lines will not be executed
-			System.out.println("Array-Index-out-of-bounds Exception");
+			System.out.println("Generating Array-Index-out-of-bounds Exception");
 			
 			if(flag2)
 				arry[17] = 17;
@@ -63,11 +76,29 @@ class Class2
 		{
             System.out.println("Array-index-out-of-bounds Exception caught");
         }
-		catch (RuntimeException e)	// general exception-catch block
+		/*
+		 *  the catch are executed linearly, considering the first match as best match
+		 *	the specific catches must preceed the general catch
+		 *	the acquired resources ( here 'arry') is not released
+		 */
+		finally
 		{
-            System.out.println("Some Exception caught");
-        }
-		// the catch are executed linearly, considering the first match as best match
+			System.out.println("In Finally block of Class2.method1");
+			
+			// Release your resources here
+			
+			if(arry != null)
+				arry = null;
+			/* There no gaurantee of release (free) of 'arry' memory here
+			 *  If the JVM can detect that a piece of memory is no longer reachable by 
+			 *  the entire program, then the JVM will free the memory
+			 *  
+			 * That said, class objects' destructor can be called here 
+			*/
+			
+			System.out.println("Resources released");
+		}
+		
 		
 		System.out.println("Some random print message ");
 		System.out.println("Leaving  Class2.method1 ");
