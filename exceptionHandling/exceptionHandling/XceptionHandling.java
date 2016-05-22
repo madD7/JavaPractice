@@ -42,7 +42,7 @@ class Class2
 		
 		System.out.println("Entering  Class2.method1 ");
 		
-		// Multiple Exception generating statements
+		// Multiple Exception generating statements will result to execution of the exception that occurs first
 		try 
 		{
 			System.out.println("Entering try");
@@ -53,19 +53,17 @@ class Class2
 				a = b / c;
 			
 			// Following Lines will not be executed
-			System.out.println("Array-out-of-bounds Exception");
+			System.out.println("Array-Index-out-of-bounds Exception");
 			
 			if(flag2)
 				arry[17] = 17;
 			
 			System.out.println("This line is not executed"); 
-		}catch (ArithmeticException e)
+		}catch (RuntimeException e)	// RuntimeException is parent class of exceptions
 		{
-            System.out.println("Arithmetic Exception caught");
-        } catch (ArrayIndexOutOfBoundsException ar) 
-		{
-            System.out.println("ArrayIndexOutOfBoundsException caught");
-		}
+            System.out.println("Some Exception caught");
+        }
+		// the Parent handle of runtime Exception can catch various child class exceptions implementing parent class (Runtime)
 		
 		System.out.println("Some random print message ");
 		System.out.println("Leaving  Class2.method1 ");
