@@ -21,17 +21,8 @@ class Class1
 	static void method1()
 	{
 		System.out.println("Entering  Class1.method1 ");
-		try 
-		{
-          	System.out.println("Entering try");
-            
-          	Class2.method1();
-            
-            System.out.println("This line is not executed"); 
-		}catch (ArithmeticException e) 
-		{
-			System.out.println("Arithmetic Exception Caught ");
-		}
+         
+       	Class2.method1();
 		
         System.out.println("Leaving  Class1.method1 ");
 	}
@@ -43,14 +34,32 @@ class Class2
 	static void method1()
 	{
 		int a=1, b=2, c=0;
+		int [] arry = new int[10];
+		
 		System.out.println("Entering  Class2.method1 ");
 		
-		// Generating a Divide-by-Zero exception
-		a = b / c;
-      	// The exception is propogated to Class1.method1 as the catch block is in that method 
+		// Multiple Exception generating statements
+		try 
+		{
+			System.out.println("Entering try");
+			
+			System.out.println("Divide-by-0 Exception");
+			a = b / c;
+			
+			// Following Lines will not be executed
+			System.out.println("Array-out-of-bounds Exception");
+			arry[17] = 17;
+			
+			System.out.println("This line is not executed"); 
+		}catch (ArithmeticException e)
+		{
+            System.out.println("Arithmetic Exception caught");
+        } catch (ArrayIndexOutOfBoundsException ar) 
+		{
+            System.out.println("ArrayIndexOutOfBoundsException caught");
+		}
 		
-		
-		System.out.println("Some random print message to check whether it executes or not ");
+		System.out.println("Some random print message ");
 		System.out.println("Leaving  Class2.method1 ");
 	}
 }
