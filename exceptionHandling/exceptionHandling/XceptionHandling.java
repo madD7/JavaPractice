@@ -20,8 +20,11 @@ class Class1
 {
 	static void method1()
 	{
+		String str=null;
+		
 		System.out.println("Entering  Class1.method1 ");
         
+		// this is nested try-catch (try-catch inside a tri-catch)
 		try
 		{
 			Class2.method1();
@@ -35,6 +38,17 @@ class Class1
 		finally
 		{
 			System.out.println("In Finally block of Class1.method1");
+		}
+		
+		// adjacent try-catch
+		// one-after the other
+		try
+		{
+			str.equals("ends");
+		}
+		catch(NullPointerException n)
+		{
+			 System.out.println("NullPointer Exception caught");
 		}
 		
         System.out.println("Leaving  Class1.method1 ");
@@ -98,7 +112,6 @@ class Class2
 			
 			System.out.println("Resources released");
 		}
-		
 		
 		System.out.println("Some random print message ");
 		System.out.println("Leaving  Class2.method1 ");
