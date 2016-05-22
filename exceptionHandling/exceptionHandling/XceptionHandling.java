@@ -31,6 +31,10 @@ class Class1
 
 class Class2
 {
+	// Enable/Disable flags to check different cases of try-catch
+	static boolean flag1 = true ;
+    static boolean flag2 = true ;
+    
 	static void method1()
 	{
 		int a=1, b=2, c=0;
@@ -44,11 +48,15 @@ class Class2
 			System.out.println("Entering try");
 			
 			System.out.println("Divide-by-0 Exception");
-			a = b / c;
+			
+			if(flag1)
+				a = b / c;
 			
 			// Following Lines will not be executed
 			System.out.println("Array-out-of-bounds Exception");
-			arry[17] = 17;
+			
+			if(flag2)
+				arry[17] = 17;
 			
 			System.out.println("This line is not executed"); 
 		}catch (ArithmeticException e)
