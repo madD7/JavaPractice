@@ -33,13 +33,13 @@ class Class2
 	{
 		int a=1, b=2, c=0;
 		int [] ary = new int [10];
-		
+		String str = null;
 		System.out.println("Entering  Class2.method1 ");
 		
 		// Generating an Exception 
-		
 		//a = b/c;					// Divinding by zero is an Error
-		ary[17] = 17;				// Accessing an element that is not in array 
+		//ary[17] = 17;				// Accessing an element that is not in array
+		str.equals("end");			// Str is a null pointer (doesn't point to any address)  
         		
 		
 		System.out.println("Leaving  Class2.method1 ");
