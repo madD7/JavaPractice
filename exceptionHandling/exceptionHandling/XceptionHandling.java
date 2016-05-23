@@ -20,23 +20,35 @@ class Class1
 {
 	static void method1()
 	{
-		String str=null;
+		String str="ends";
 		
 		System.out.println("Entering  Class1.method1 ");
         
 		// this is nested try-catch (try-catch inside a tri-catch)
 		try
 		{
-			Class2.method1();
+			for(int j=10; j>=0; j--)
+			{	
+				System.out.println("j = "+j);
+				
+				if(j%5 == 0)
+					Class2.method1(j , null);
+				else if (j<4)
+					Class2.method1(j , "i m 2");
+				else
+					Class2.method1(j , str);
+			}
 		}
 		// Only Arithmetic Exception will be caught here. 
 		// Array-index-out-of-bounds Exception is already caught in the function itself.
 		catch(ArithmeticException a)			
 		{
 			System.out.println("Arithematic Exception caught in Class1.method1 ");
+			System.exit(0);
 		}
 		finally
 		{
+			// this finally block will not execute due to System.exit
 			System.out.println("In Finally block of Class1.method1");
 		}
 		
@@ -46,9 +58,9 @@ class Class1
 		{
 			str.equals("ends");
 		}
-		catch(NullPointerException n)
+		catch(RuntimeException n)
 		{
-			 System.out.println("NullPointer Exception caught");
+			 System.out.println("Some Runtime Exception caught");
 		}
 		
         System.out.println("Leaving  Class1.method1 ");
@@ -58,38 +70,46 @@ class Class1
 
 class Class2
 {
-	// Enable/Disable flags to check different cases of try-catch
-	static boolean flag1 = true ;
-    static boolean flag2 = true ;
-    
-	static void method1()
+	static void method1(int val, String str)
 	{
-		int a=1, b=2, c=0;
+		int a=1, b=2;
 		int [] arry = new int[10];
 		
-		System.out.println("Entering  Class2.method1 ");
+		System.out.println("Entering Class2.method1 ");
 		
 		// Multiple Exception generating statements will result to execution of the exception that occurs first
 		try 
 		{
-			System.out.println("Entering try");
+			System.out.println("Entering try of Class2.method1");
 			
-			System.out.println("Generating Divide-by-0 Exception");
+			a = b / val;
 			
-			if(flag1)
-				a = b / c;
+			arry[val] = val;
 			
-			// Following Lines will not be executed
-			System.out.println("Generating Array-Index-out-of-bounds Exception");
+			for(int x : arry)
+			{
+				System.out.print(x + " ");
+			}
 			
-			if(flag2)
-				arry[17] = 17;
+			if(str.equals("ends"))
+			{
+				System.out.println("\nStrings equals ends");
+				return;
+			}
+			else
+			{
+				System.out.println("str '" + str + "' is not equals 'ends'");
+			}
 			
 			System.out.println("This line is not executed"); 
 		}catch (ArrayIndexOutOfBoundsException ar)	// specific Exception-catch block
 		{
             System.out.println("Array-index-out-of-bounds Exception caught");
         }
+		catch(NullPointerException n)
+		{
+			 System.out.println("NullPointer Exception caught");
+		}
 		/*
 		 *  the catch are executed linearly, considering the first match as best match
 		 *	the specific catches must preceed the general catch
