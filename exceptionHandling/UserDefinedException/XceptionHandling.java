@@ -20,24 +20,20 @@ class Class1
 {
 	static void method1()
 	{
-		String str="ends";
-		
-		System.out.println("Entering  Class1.method1 ");
+		System.out.println("Entering Class1.method1 ");
         
-		// this is nested try-catch (try-catch inside a tri-catch)
+		// this is nested try-catch (try-catch inside a try-catch)
 		try
 		{
-			for(int j=10; j>0; j--)
+			for(int j=6; j>0; j--)
 			{	
 				System.out.println("j = "+j);
-				
-				if(j%5 == 0)
-					Class2.method1(j , null);
-				else if (j<4)
-					Class2.method1(j , "i m 2");
-				else
-					Class2.method1(j , str);
+				Class2.method1(j);
 			}
+		}
+		catch(ChkException e)
+		{
+			System.out.println("CheckedException propogates to Class1.method1");
 		}
 		// Only Arithmetic Exception will be caught here. 
 		// Array-index-out-of-bounds Exception is already caught in the function itself.
@@ -50,17 +46,15 @@ class Class1
 		{
 			// this finally block will not execute if System.exit is executed
 			System.out.println("In Finally block of Class1.method1");
-			str = null;
 		}
 		
 		// adjacent try-catch
 		// one-after the other
 		try
 		{
-			if(str == null)
-				throw new UsrException("User exception generated");
+			throw new UnChkException("User exception generated");
 		}
-		catch(UsrException n)
+		catch(UnChkException n)
 		{
 			 System.out.println("Some Runtime Exception caught: " + n.getError());
 		}
@@ -72,11 +66,9 @@ class Class1
 
 class Class2
 {
-	static void method1(int val, String str)
+	static void method1(int val) throws ChkException // "throws" is must for a checked exception to propagate
 	{
-		int a=1, b=2;
-		int [] arry = new int[10];
-		
+		int [] ary = new int[1];
 		System.out.println("Entering Class2.method1 ");
 		
 		// Multiple Exception generating statements will result to execution of the exception that occurs first
@@ -84,30 +76,42 @@ class Class2
 		{
 			System.out.println("Entering try of Class2.method1");
 			
-			a = b / val;
-			
-			arry[val] = val;
-			
-			for(int x : arry)
+			switch(val)
 			{
-				System.out.print(x + " ");
+				case 0:
+					val /= 0;
+					break;
+					
+				case 1:
+					throw new ChkException("This is Checked Exception");
+					//break; // because break statement is unreachable
+					
+				case 2:
+					throw new UnChkException("This is unchecked exception, catch implmentation not compulsary");
+					//break; // because break statement is unreachable
+					
+				case 3:
+					ary[val] = val;
+					break;
+					
+				case 4:
+					ary = null;
+					ary.equals("hi");
+					// break; 
+					
+				default:
+					System.out.println("Default case");
+					break;
 			}
-			
-			if(str.equals("ends"))
-			{
-				System.out.println("\nStrings equals ends");
-				return;
-			}
-			else
-			{
-				System.out.println("str '" + str + "' is not equals 'ends'");
-			}
-			
-			System.out.println("This line is not executed"); 
+			System.out.println("This line is not executed in case of exception"); 
 		}catch (ArrayIndexOutOfBoundsException ar)	// specific Exception-catch block
 		{
             System.out.println("Array-index-out-of-bounds Exception caught");
         }
+		catch(UnChkException u)
+		{
+			System.out.println("Unchecked exception would propagate above if not caught");
+		}
 		catch(NullPointerException n)
 		{
 			 System.out.println("NullPointer Exception caught");
@@ -122,9 +126,7 @@ class Class2
 			System.out.println("In Finally block of Class2.method1");
 			
 			// Release your resources here
-			
-			if(arry != null)
-				arry = null;
+
 			/* There no gaurantee of release (free) of 'arry' memory here
 			 *  If the JVM can detect that a piece of memory is no longer reachable by 
 			 *  the entire program, then the JVM will free the memory
