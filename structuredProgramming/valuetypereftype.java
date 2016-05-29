@@ -2,20 +2,20 @@ package structuredProgramming;
 
 /**
  * @author madD7
- * a simple java program
+ * Calculator Program - Demonstrate value type & Reference type
  */
 
-// Demonstrate value type variable and reference type variable
 
+public class ValueTypeRefType {
 
-class valuetypereftype {
-
-	public static void main(String args)
+	public static void main(String[] args)
 	{
-		int valuetype=10;
-		String reftype="Hello World";
+		int vlutype = 10;
+		String reftype = "Hello world";
 		
-		System.out.println("Value of valuetype: " + valuetype);
+		System.out.println("value of Value type variable vlutyp = " + vlutype);
 		System.out.println(reftype);
+				
 	}
+
 }
