@@ -1,5 +1,9 @@
 package structuredProgramming;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * @author madD7
  * Calculator Program - Demonstrate value type & Reference type
@@ -27,6 +31,22 @@ package structuredProgramming;
 public class ValueTypeRefType {
 
 	public static void main(String[] args)
+	{
+		ValueTypeRefType();
+		PrimitiveTypes();
+		
+		try
+		{
+			Addition();
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	static void ValueTypeRefType()
 	{
 		int i = 5;
         int j = 1;
@@ -62,9 +82,11 @@ public class ValueTypeRefType {
         
         System.out.println("str1 = " + str1);
         System.out.println("str2 = " + str2);
-         	
-        
-        System.out.println("Demonstration of Primitive types in Java, theirs state space and sizes");
+	}
+	
+	static void PrimitiveTypes()
+	{
+		System.out.println("Demonstration of Primitive types in Java, theirs state space and sizes");
         
         /*
          * Wrapper Classes of the respective primitive types are used below
@@ -100,5 +122,19 @@ public class ValueTypeRefType {
         System.out.println("The MAX_VALUE of Float in bytes is " + Float.MAX_VALUE);
         System.out.println("The MIN_VALUE of Float in bytes is " + Float.MIN_VALUE);
 	}
-
+	
+	static void Addition() throws IOException
+	{
+		// 
+		InputStreamReader in = new InputStreamReader(System.in);
+		BufferedReader read = new BufferedReader(in);
+		
+		System.out.println("Enter first number");
+		int num1 = Integer.parseInt(read.readLine());
+		
+		System.out.println("Enter second number");
+		int num2 = Integer.parseInt(read.readLine());
+		
+		System.out.println("Sum of two numbers is " + (num1+num2));
+	}
 }
