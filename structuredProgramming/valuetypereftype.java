@@ -13,15 +13,53 @@ package structuredProgramming;
  */
 
 
+/**
+ * This program illustrates how java imposes the value type semantics on strings 
+ * even though string is a reference type. Usually in a reference type, 
+ * multiple reference variables can refer to the same value ( memory block ). 
+ * Consequently, changing value via one variable gets reflected when accessing value via other variable. 
+ * Immutability of string eliminates this scenario.
+ */
+
+
 public class ValueTypeRefType {
 
 	public static void main(String[] args)
 	{
-		int vlutype = 10;
-		String reftype = "Hello world";
-		
-		System.out.println("value of Value type variable vlutyp = " + vlutype);
-		System.out.println(reftype);			
+		int i = 5;
+        int j = 1;
+        
+        System.out.print(" i = " + i);
+        System.out.println("\t j = " + j); 
+       
+        j = i;
+        
+        System.out.print(" i = " + i);
+        System.out.println("\t j = " + j);
+        
+        i = 9;
+        
+        System.out.print(" i = " + i);
+        System.out.println("\t j = " + j);
+        
+        String str1 = "Hello";
+        String str2 = "bye";
+        
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+        
+        // String 1 & 2 now refer to the same string "Hello" 
+        str2 = str1;
+        
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+        
+        // But though Str1 is changed, Str2 doesnt change.
+        // Which means Strings are Immutable in Java
+        str1 = "ok";
+        
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
 	}
 
 }
