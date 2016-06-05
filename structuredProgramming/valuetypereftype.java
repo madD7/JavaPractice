@@ -34,6 +34,15 @@ public class ValueTypeRefType {
 	{
 		ValueTypeRefType();
 		PrimitiveTypes();
+		
+		try
+		{
+			Math();
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
@@ -55,6 +64,7 @@ public class ValueTypeRefType {
         System.out.print(" i = " + i);
         System.out.println("\t j = " + j);
         
+        // this are string literals (constants)
         String str1 = "Hello";
         String str2 = "bye";
         
@@ -112,5 +122,38 @@ public class ValueTypeRefType {
         System.out.println("The size of Float in bytes is " + Float.BYTES + "bytes");
         System.out.println("The MAX_VALUE of Float in bytes is " + Float.MAX_VALUE);
         System.out.println("The MIN_VALUE of Float in bytes is " + Float.MIN_VALUE);
+	}
+	
+	static void Math() throws IOException
+	{
+		// Reading input from keyboard (standard input stream)
+		InputStreamReader in = new InputStreamReader(System.in);
+		BufferedReader read = new BufferedReader(in);
+		
+		System.out.println("Enter first number");
+		int num1 = Integer.parseInt(read.readLine());
+		
+		System.out.println("Enter second number");
+		int num2 = Integer.parseInt(read.readLine());
+		
+		System.out.println( "Enter a for Addition\n"+
+		           "Enter s for Substraction\n"+
+		           "Enter m for Multiplication\n"+
+		           "Enter d for Division\n");
+		
+		char opt = (char) read.read(); 
+		
+		int result = 0;
+        
+        switch(opt)
+        {
+        	case 'A': case 'a' : result = num1 + num2; break;
+        	case 'S': case 's' : result = num1 - num2; break;
+        	case 'M': case 'm' : result = num1 * num2; break;
+        	case 'D': case 'd' : result = num1 / num2; break;
+        }
+        
+        System.out.println("The result of operation is " + result);
+		
 	}
 }
