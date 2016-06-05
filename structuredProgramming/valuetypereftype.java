@@ -34,15 +34,6 @@ public class ValueTypeRefType {
 	{
 		ValueTypeRefType();
 		PrimitiveTypes();
-		
-		try
-		{
-			Addition();
-		}
-		catch(IOException e)
-		{
-			System.out.println(e.getMessage());
-		}
 	}
 	
 	
@@ -121,20 +112,5 @@ public class ValueTypeRefType {
         System.out.println("The size of Float in bytes is " + Float.BYTES + "bytes");
         System.out.println("The MAX_VALUE of Float in bytes is " + Float.MAX_VALUE);
         System.out.println("The MIN_VALUE of Float in bytes is " + Float.MIN_VALUE);
-	}
-	
-	static void Addition() throws IOException
-	{
-		// 
-		InputStreamReader in = new InputStreamReader(System.in);
-		BufferedReader read = new BufferedReader(in);
-		
-		System.out.println("Enter first number");
-		int num1 = Integer.parseInt(read.readLine());
-		
-		System.out.println("Enter second number");
-		int num2 = Integer.parseInt(read.readLine());
-		
-		System.out.println("Sum of two numbers is " + (num1+num2));
 	}
 }
