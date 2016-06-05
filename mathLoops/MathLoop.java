@@ -13,6 +13,8 @@ public class MathLoop {
 		
 		System.out.print("Is 1001 prime? ");
 		System.out.println(isPrime(1001)?"Yes":"No");
+		
+		printFibonnaci(100);
 	}
 	
 	static boolean isPrime(int num)
@@ -30,6 +32,20 @@ public class MathLoop {
 		}
 		
 		return true;
+	}
+	
+	static void printFibonnaci(int num)
+	{
+		int fi=1;
+		int prev=0;
+		
+		while(fi < num )
+		{
+			int temp=prev;
+			System.out.print(fi + " ");
+			prev = fi;
+			fi += temp; 
+		}
 	}
 
 }
