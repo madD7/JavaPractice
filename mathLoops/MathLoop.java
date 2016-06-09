@@ -17,6 +17,10 @@ public class MathLoop {
 		printFibonnaci(100);
 		System.out.println("\n");
 		primeFactor(646323);
+		System.out.println("\n");
+		
+		System.out.print("Is 10201 Palindrome? ");
+		System.out.println(isPalindrome(10201)?"Yes":"No");
 	}
 	
 	static boolean isPrime(int num)
@@ -61,5 +65,24 @@ public class MathLoop {
 			}
 		}
 	}
+	
+	public static int reverseNumbr(int no)
+    {
+        int reverseNo = 0;
+        
+        for(;no>0;no/=10)
+        {
+            reverseNo *= 10;
+            reverseNo += (no%10);
+        }
+        return reverseNo;
+    }
+
+    public static boolean isPalindrome(int no)
+    {
+        if(no == reverseNumbr(no))
+            return true;
+        return false;
+    }
 
 }
