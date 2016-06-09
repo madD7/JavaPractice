@@ -15,6 +15,8 @@ public class MathLoop {
 		System.out.println(isPrime(1001)?"Yes":"No");
 		
 		printFibonnaci(100);
+		System.out.println("\n");
+		primeFactor(646323);
 	}
 	
 	static boolean isPrime(int num)
@@ -26,7 +28,7 @@ public class MathLoop {
 		{
 			if( num%i == 0)
 			{
-				System.out.print("The number "+num+ " is divisible by " + i + ". So answer is ");
+				//System.out.print("The number "+num+ " is divisible by " + i + ". So answer is ");
 				return false;
 			}
 		}
@@ -39,12 +41,24 @@ public class MathLoop {
 		int fi=1;
 		int prev=0;
 		
-		while(fi < num )
+		while(fi < num)
 		{
 			int temp=prev;
 			System.out.print(fi + " ");
 			prev = fi;
 			fi += temp; 
+		}
+	}
+	
+	static void primeFactor(int num)
+	{
+		System.out.print("The prime factors of " + num + "are:\n\t\t"); 
+		for(int i=2; i<=num/2; i++)
+		{
+			if((num%i == 0) && isPrime(i))
+			{
+				System.out.print( i + " ");
+			}
 		}
 	}
 
