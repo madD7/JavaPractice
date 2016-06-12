@@ -14,8 +14,16 @@ package point;
  * */
 class Point
 {
+	private String name;
+	
 	int x;		// Instance variables
 	int y;
+		
+	/* Constructor */
+	Point(String name)
+	{
+		this.name = name;
+	}
 	
 	/**
 	 * Shift in thought process for a C programmer
@@ -30,7 +38,7 @@ class Point
 	
 	void print()
 	{
-		System.out.println("Co-ordinates x:"+this.x+", y:"+this.y);
+		System.out.println("Co-ordinates of " + this.name + " x:"+this.x+", y:"+this.y);
 	}
 }
 
@@ -38,8 +46,8 @@ public class ObjectCreation{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Point p1 = new Point();
-		Point p2 = new Point();
+		Point p1 = new Point("p1");
+		Point p2 = new Point("p2");
 		
 		p1.x = 2;
 		p1.y = 4;
