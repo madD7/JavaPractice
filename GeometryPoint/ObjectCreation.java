@@ -20,10 +20,29 @@ class Point
 	int x=1;		// Variable description and not a variable - beware C programmer. Dont get fooled.
 	int y=1;		//
 		
-	/* Constructor */
+	/* Constructors
+	 * Implicit invocation of initialization, invoked during creation of object.
+	 * This, it is called in creation phase of object and not usage phase of object
+	 * Implicit invocation means - calling method is not allowed for user
+	 * As constructor is implicitly initialized, return type is not required.
+	 * 
+	 * PS: Life cycle of object - creation phase, usage phase, destruction phase
+	 *  */
 	Point(String name)
 	{
 		this.name = name;
+	}
+	
+	/*
+	 * init method can be used for initialization.
+	 * but it would result to initialization of object variables in its usage phase and not creation phase
+	 */
+	// init(int x, int y) 
+	
+	Point(int x, int y)
+	{
+		this.x = x;
+		this.y = y;
 	}
 	
 	/**
