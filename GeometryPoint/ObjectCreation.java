@@ -51,6 +51,7 @@ class Point
 		System.out.println("In Constructor Co-ordinates x:"+this.x+", y:"+this.y);
 	}
 	
+	
 	/*
 	 * init method can be used for initialization.
 	 * but it would result to initialization of object variables in its usage phase and not creation phase
@@ -64,6 +65,14 @@ class Point
 		this();
 		this.x = x;
 		this.y = y;
+	}
+	
+	/*Warning!! this method has constructor name*/
+	void Point(String name, int x, int y)
+	{
+		System.out.println("Though, by the name, the method looks like a constructor, it is not");
+		System.out.println("Its a method as it has return tppe, which constructors dont have");
+		System.out.println("Beware!! This may be asked in interviews");
 	}
 	
 	/**
@@ -102,6 +111,8 @@ public class ObjectCreation{
 		 * */
 		p1.print();
 		p2.print();
+		
+		//p3.Point(); // Explicit calls not allowed
 		p3.print();
 		
 		p1.x = 2;
