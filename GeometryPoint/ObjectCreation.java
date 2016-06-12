@@ -17,8 +17,8 @@ class Point
 	private String name;
 	
 	// Initializing with User defined value
-	int x=1;		// Variable description and not a variable - beware C programmer. Dont get fooled.
-	int y=1;		//
+	int x=9;		// Variable description and not a variable - beware C programmer. Dont get fooled.
+	int y=9;		//
 		
 	/* Constructors
 	 * Implicit invocation of initialization, invoked during creation of object.
@@ -32,6 +32,24 @@ class Point
 	{
 		this.name = name;
 	}
+
+	/*
+	 * If user doesnt create a constructor, the system creates the constructor, default constructor.
+	 * When user creates constructor, user has to write all the possible variations of constructor that user is using in the code\
+	 * 
+	 * Hence...
+	 */
+	Point()
+	{
+		/* 
+		 * To check if the initializer is called before constructor
+		 * Initializer is called before constructor  in Java & C# but not C++
+		 * Though this causes a performance overhead, calling of initializer brefore constructors is advantageous in sense that
+		 * 		If variables, more importantly 'reference handle's are left uninitialized by user, (may be due to different constructors, or other reason, what-so-ever),
+		 * 		the system ensures that the reference handles point to/are initialized to null.
+		*/
+		System.out.println("In Constructor Co-ordinates x:"+this.x+", y:"+this.y);
+	}
 	
 	/*
 	 * init method can be used for initialization.
@@ -41,6 +59,9 @@ class Point
 	
 	Point(int x, int y)
 	{
+		// Constructor calling a constructor, but this has to be the first executable statement. 
+		// It cant be preceeded by another executable statement. 
+		this();
 		this.x = x;
 		this.y = y;
 	}
@@ -68,6 +89,7 @@ public class ObjectCreation{
 		
 		Point p1 = new Point("p1");
 		Point p2 = new Point("p2");
+		Point p3 = new Point();
 		
 		// Printing before initializing, results to (0,0) or User initialized values 
 		/*
@@ -80,6 +102,7 @@ public class ObjectCreation{
 		 * */
 		p1.print();
 		p2.print();
+		p3.print();
 		
 		p1.x = 2;
 		p1.y = 4;
