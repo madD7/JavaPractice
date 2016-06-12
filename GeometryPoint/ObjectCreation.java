@@ -16,8 +16,9 @@ class Point
 {
 	private String name;
 	
-	int x;		// Instance variables
-	int y;
+	// Initializing with User defined value
+	int x=1;		// Variable description and not a variable - beware C programmer. Dont get fooled.
+	int y=1;		//
 		
 	/* Constructor */
 	Point(String name)
@@ -49,7 +50,7 @@ public class ObjectCreation{
 		Point p1 = new Point("p1");
 		Point p2 = new Point("p2");
 		
-		// Printing before initializing results to 0,0 
+		// Printing before initializing, results to (0,0) or User initialized values 
 		/*
 		 * After heap manager creates the object, initializer is invoked
 		 * Initializer, initializes the object to 0
