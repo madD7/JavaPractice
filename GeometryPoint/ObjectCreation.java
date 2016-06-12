@@ -90,6 +90,56 @@ class Point
 	{
 		System.out.println("Co-ordinates of " + this.name + " x:"+this.x+", y:"+this.y);
 	}
+	
+	/*
+	 * Instance block (without name)
+	 * Object can have multiple instance blocks
+	 */
+	{
+		System.out.println("A block with no name. This is an instance block");
+	}
+	
+	/*
+	 * Static block (without name)
+	 * Invoked when a class is loaded in memory
+	 * Class can have multiple static blocks
+	 * 
+	 * Pro Alert: Write code in static block and then perform System.exit().
+	 * 				main function would no longer be executed.
+	 * 				Software thieves can be fooled to an extent using this technique ;)  
+	 * */
+	
+	/*
+	 * Another static block
+	 * */
+	static 
+	{
+		System.out.println("Another static block. To check if the positioning or occurance in class makes any difference");
+	}
+	
+	static 
+	{
+		System.out.println("A static block without name.");
+		System.out.println("Block positioning is important");
+		Point p4 = new Point("p4");
+		Point p5 = new Point(12,14);
+		
+		p4.print();
+		p5.print();
+		
+		p5.movePoint(4,9);
+		
+		System.exit(0);
+	}
+	
+	
+	/*
+	 * Yet Another static block
+	 * */
+	static 
+	{
+		System.out.println("Yet Another static block. Will not be called due to positioning of code block");
+	}
 }
 
 public class ObjectCreation{
