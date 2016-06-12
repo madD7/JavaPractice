@@ -49,6 +49,18 @@ public class ObjectCreation{
 		Point p1 = new Point("p1");
 		Point p2 = new Point("p2");
 		
+		// Printing before initializing results to 0,0 
+		/*
+		 * After heap manager creates the object, initializer is invoked
+		 * Initializer, initializes the object to 0
+		 * int type variable initializes to 0
+		 * float to 0.0
+		 * boolean to false
+		 * handle to null
+		 * */
+		p1.print();
+		p2.print();
+		
 		p1.x = 2;
 		p1.y = 4;
 		
