@@ -33,6 +33,11 @@ class Point
 	{
 		System.out.println("Co-ordinates of " + this.name + " x:"+this.x+", y:"+this.y);
 	}
+	
+	public String toString()
+	{
+		return this.name;
+	}
 }
 
 
@@ -64,6 +69,13 @@ class SimpleSegment
 		System.out.print("Co-ordinates of " + this.name + " x1:"+this.x1+", y1:"+this.y1);
 		System.out.println(" and" + " x2:"+this.x2+", y2:"+this.y2);
 	}
+	
+	/* purposely commented to enable printing hashcode
+	public String toString()
+	{
+		return this.name;
+	}
+	*/
 }
 
 
@@ -104,6 +116,11 @@ class CompositeSegment
 		System.out.print("Co-ordinates of " + this.name + " Start point: x="+this.start.x +", y="+this.start.y);
 		System.out.println(" and" + " End point: x="+this.end.x +", y="+this.end.y);
 	}
+	
+	public String toString()
+	{
+		return this.name;
+	}
 }
 
 
@@ -119,5 +136,20 @@ public class ObjCompositn {
 		S2.print();
 		S2.start.print();
 		S2.end.print();
+		
+		/* 
+		 * Prints value of handle object referenced by the handle - the "hashcode", 
+		 * Not the address of variable/object the handle refers to.
+		 * C Programmers beware!!
+		*/ 
+		System.out.println("S1 handle refers to "+ S1);
+		
+		/*
+		 * But if a class has a method named 'toString' with return type String,
+		 * then System.out.println prints the string returned by 'toString'
+		 * */
+		System.out.println("S2.start handle refers to "+ S2.start);
+		System.out.println("S2.end handle refers to "+ S2.end);
+		
 	}
 }
