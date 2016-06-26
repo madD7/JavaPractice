@@ -6,6 +6,8 @@ package objcompositn;
  * Object Composition Demonstration
  * Modeling Cartesian Geometry Segment
  * 
+ * All the class variables must be private (restricted access) with getter and setter methods
+ * But this exercise was just to demonstrate object linking.
  */
 
 /**
