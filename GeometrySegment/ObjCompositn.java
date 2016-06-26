@@ -7,7 +7,7 @@ package objcompositn;
  * Modeling Cartesian Geometry Segment
  * 
  * All the class variables must be private (restricted access) with getter and setter methods
- * But this exercise was just to demonstrate object linking.
+ * Each class has name for printing purpose. This may not be necessary, but helps in demonstration & we will continue this practice. 
  */
 
 /**
@@ -15,19 +15,19 @@ package objcompositn;
  */
 class Point
 {
-	int x=0;
-	int y=0;
+	private int x=0;
+	private int y=0;
 	private String name;
 	
+	Point(String name)
+	{
+		this.name = name;
+	}
+		
 	Point(int x, int y, String name)
 	{
 		this.x = x;
 		this.y = y;
-		this.name = name;
-	}
-	
-	Point(String name)
-	{
 		this.name = name;
 	}
 	
@@ -36,9 +36,35 @@ class Point
 		System.out.println("Co-ordinates of " + this.name + " x:"+this.x+", y:"+this.y);
 	}
 	
+	@Override
 	public String toString()
 	{
 		return this.name;
+	}
+	
+	void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	void setX(int x)
+	{
+		this.x = x;
+	}
+	
+	void setY(int y)
+	{
+		this.y = y;
+	}
+	
+	int getX()
+	{
+		return this.x;
+	}
+	
+	int getY()
+	{
+		return this.y;
 	}
 }
 
@@ -50,10 +76,10 @@ class Point
  */
 class SimpleSegment
 {
-	int x1=0;
-	int y1=0;
-	int x2=1;
-	int y2=1;
+	private int x1=0;
+	private int y1=0;
+	private int x2=1;
+	private int y2=1;
 	private String name;
 	
 	SimpleSegment(int x1, int y1, int x2, int y2, String name)
@@ -94,8 +120,8 @@ class SimpleSegment
  */
 class CompositeSegment
 {
-	Point start;
-	Point end;
+	private Point start;
+	private Point end;
 	private String name;		// String name not compulsory 
 	
 	/** The following execution will result to upfront initialization, i.e. initialization during creation
@@ -113,15 +139,58 @@ class CompositeSegment
 		this.end = new Point("End pt of "+name );
 	}
 	
-	void print()
+	CompositeSegment(Point start, Point end, String name)
 	{
-		System.out.print("Co-ordinates of " + this.name + " Start point: x="+this.start.x +", y="+this.start.y);
-		System.out.println(" and" + " End point: x="+this.end.x +", y="+this.end.y);
+		this.name = name;
+		this.start = start;
+		this.end = end;
+		
+		this.start.setName("Start pt of "+name );
+		this.end.setName("End pt of "+name );
 	}
 	
+	CompositeSegment(int sX, int sY, int eX, int eY, String name)
+	{
+		this.name = name;
+		this.start = new Point(sX, sY, "Start pt of "+name );
+		this.end = new Point(eX, eY, "End pt of "+name );
+	}
+	
+	void print()
+	{
+		System.out.print("Co-ordinates of " + this.name + " Start point: x="+this.start.getX() +", y="+this.start.getY());
+		System.out.println(" and" + " End point: x="+this.end.getX() +", y="+this.end.getY());
+	}
+	
+	@Override
 	public String toString()
 	{
 		return this.name;
+	}
+	
+	void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	void setStartPt(Point start)
+	{
+		this.start = start;
+	}
+	
+	void setEndPoint(Point end)
+	{
+		this.end = end;
+	}
+	
+	Point getStartPt()
+	{
+		return start;
+	}
+	
+	Point getEndPt()
+	{
+		return end;
 	}
 }
 
@@ -131,13 +200,24 @@ public class ObjCompositn {
 	
 	public static void main(String[] args)
 	{
+		Point p;
 		SimpleSegment S1 = new SimpleSegment(0, 0, 5, 5, "S1");
 		CompositeSegment S2 = new CompositeSegment("S2");
 		
 		S1.print();
 		S2.print();
-		S2.start.print();
-		S2.end.print();
+		
+		p=S2.getStartPt();
+		p.setX(2);
+		p.setY(5);
+		System.out.println("p handle refers to "+ p);
+		S2.print();
+		
+		p=S2.getEndPt();
+		p.setX(7);
+		p.setY(6);
+		System.out.println("p handle refers to "+ p);
+		S2.print();
 		
 		/* 
 		 * Prints value of handle object referenced by the handle - the "hashcode", 
@@ -150,8 +230,8 @@ public class ObjCompositn {
 		 * But if a class has a method named 'toString' with return type String,
 		 * then System.out.println prints the string returned by 'toString'
 		 * */
-		System.out.println("S2.start handle refers to "+ S2.start);
-		System.out.println("S2.end handle refers to "+ S2.end);
+		//System.out.println("S2.start handle refers to "+ S2.start);
+		//System.out.println("S2.end handle refers to "+ S2.end);
 		
 	}
 }
