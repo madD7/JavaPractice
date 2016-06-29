@@ -45,8 +45,7 @@ public class ObjLinking {
 		obj2.d = 7;
 		
 		printClass1(obj1);
-		printClass2(obj2);
-		
+		printClass2(obj2);	
 	}
 	
 	static void printClass1(Component c)
