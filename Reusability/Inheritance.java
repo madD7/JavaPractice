@@ -45,34 +45,34 @@ public class Inheritance {
 	void demoInheritance()
 	{
 		BaseClass bObj = new BaseClass();
-		DerivedClass cObj = new DerivedClass();
+		DerivedClass dObj = new DerivedClass();
 		
 		bObj.a = 10;
 		bObj.b = 20;
 		
-		cObj.a = 100;
-		cObj.b = 200;
-		cObj.c = 300;
-		cObj.d = 400;
+		dObj.a = 100;
+		dObj.b = 200;
+		dObj.c = 300;
+		dObj.d = 400;
 		
 		bObj.print();
 		
 		/**
 		 * The methods of the base class are also a part of Child class
 		 * */
-		cObj.print();
-		cObj.printAll();
+		dObj.print();
+		dObj.printAll();
 		
 		/* A parent obj can be passed to a parent handle - obvious */
 		printBaseClass(bObj);
 		
 		/* A child obj can be passed to a child handle - obvious */
-		printDerivedClass(cObj);
+		printDerivedClass(dObj);
 		
 		/** A child obj can be passed to a parent handle - Liskov's principle of substitution
 		 * This is allowed because child obj has all the variables of parent (child has inherited from parent) 
 		 * */
-		printBaseClass(cObj);
+		printBaseClass(dObj);
 		
 		/** A child obj can be passed to a parent handle - NOT ALLOWED
 		 * Because, though child has all the properties of parent onj, vice-versa is not true

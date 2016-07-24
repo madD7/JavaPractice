@@ -35,6 +35,7 @@ public class ObjLinking {
 	{
 		Component obj1 = new Component();
 		Container obj2 = new Container();
+		Inheritance iobj = new Inheritance();
 		
 		obj1.a = 1;
 		obj1.b = 2;
@@ -45,7 +46,9 @@ public class ObjLinking {
 		obj2.d = 7;
 		
 		printClass1(obj1);
-		printClass2(obj2);	
+		printClass2(obj2);
+		
+		iobj.demoInheritance();
 	}
 	
 	static void printClass1(Component c)
