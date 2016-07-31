@@ -26,6 +26,18 @@ class BaseClass
 	private int a;
 	private int b;
 	
+	
+	BaseClass() {
+		// Do Nothing
+	}
+	
+	/* Constructor */
+	BaseClass(int a, int b)
+	{
+		this.a = a;
+		this.b = b;
+	}
+	
 	void print()
 	{
 		System.out.println("Print method of Parent class");
@@ -73,6 +85,23 @@ class DerivedClass extends BaseClass
 {
 	private int c;
 	private int d;
+	
+	DerivedClass()	{		
+		// Do Nothing 
+	}
+	
+	/* Constructor */
+	/* 
+	 * If Constructor for derived class is not defined, then following error is generated.
+	 * Implicit super constructor BaseClass() is undefined for default constructor. Must define an explicit constructor
+	 * */
+	DerivedClass(int a, int b, int c, int d)
+	{
+		super(a, b); // this is a call to the parent class constructor
+		this.c = c;
+		this.d = d;
+	}
+	
 	
 	/**
 	 * The child class inherits parent. thus the child class already has 'print' method inherited from parent.
