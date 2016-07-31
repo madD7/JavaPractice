@@ -9,6 +9,9 @@ package reusability;
  * 
  * Reusability using object linking 
  * Disadvantage: If container object is missing, Component is also lost
+ * 
+ * Also, object composition is more of a relationship between objects
+ * whereas inheritance is a relationship between classes
  */
 
 
@@ -35,7 +38,6 @@ public class ObjLinking {
 	{
 		Component obj1 = new Component();
 		Container obj2 = new Container();
-		Inheritance iobj = new Inheritance();
 		
 		obj1.a = 1;
 		obj1.b = 2;
@@ -46,9 +48,7 @@ public class ObjLinking {
 		obj2.d = 7;
 		
 		printClass1(obj1);
-		printClass2(obj2);
-		
-		iobj.demoInheritance();
+		printClass2(obj2);	
 	}
 	
 	static void printClass1(Component c)
