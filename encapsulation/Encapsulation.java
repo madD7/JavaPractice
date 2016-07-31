@@ -21,6 +21,17 @@ class BaseClass
 	
 	void print()
 	{
+		System.out.println("Print method of Parent class");
+		System.out.println("Value of a is " + this.a);
+		System.out.println("Value of b is " + this.b);
+	}
+	
+	/**
+	 * Final keyword prevents the overriding of the method in derived classes
+	 * */
+	final void printParentVariables()
+	{
+		System.out.println("printParentVariables method of Parent class");
 		System.out.println("Value of a is " + this.a);
 		System.out.println("Value of b is " + this.b);
 	}
@@ -57,17 +68,28 @@ class DerivedClass extends BaseClass
 	private int d;
 	
 	/**
-	 * The child class inherits parent
-	 * Hence variables present in parent class are also present in child class.
-	 * This is by inheritance. 
+	 * The child class inherits parent. thus the child class already has 'print' method inherited from parent.
+	 * But we can over-ride 'print' function of the parent class using the keyword 'Override' 
 	 */
-	void printAll()
+	@Override
+	void print()
 	{
+		System.out.println("Print method of Child class");
 		System.out.println("Value of a is " + getA());
 		System.out.println("Value of b is " + getB());
 		System.out.println("Value of c is " + this.c);
 		System.out.println("Value of d is " + this.d);
 	}
+	
+	/*
+	// Uncommenting would result to error
+	// because cant override final method of parent class 
+	@Override
+	void printParentVariables()
+	{
+		System.out.println("printParentVariables method of Child class");
+	}
+	*/
 	
 	void setC(int c)
 	{
@@ -90,6 +112,31 @@ class DerivedClass extends BaseClass
 	}
 }
 
+/**
+ * Final keyword prevents inheritance of the class
+ * */
+final class FinalBaseClass
+{
+	int x;
+	
+	void print()
+	{
+		System.out.println("Value of x is " + this.x);
+	}
+}
+
+
+// Cant inherit a final class
+class AnotherChildClass //extends FinalBaseClass
+{
+	int y;
+	
+	void print()
+	{
+		System.out.println("Value of x is " + this.y);
+	}
+}
+
 
 
 public class Encapsulation {
@@ -99,6 +146,8 @@ public class Encapsulation {
 		BaseClass bObj = new BaseClass();
 		bObj.setA(5);
 		bObj.setB(7);
+		
+		// This is print method of the parent class
 		bObj.print();
 		
 		DerivedClass dObj = new DerivedClass();
@@ -107,8 +156,7 @@ public class Encapsulation {
 		dObj.setC(30);
 		dObj.setD(40);
 		
+		// this is print function of the child class, which has been over-rode
 		dObj.print();
-		dObj.printAll();
 	}
-
 }
