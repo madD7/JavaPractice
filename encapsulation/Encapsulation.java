@@ -1,13 +1,20 @@
 package encapsulation;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 /**
  * @author madD7
  *
  * This example is to demonstrate encapsulation
  * Encapsulation is process of wrapping behaviour & state into a single unit.
- * An encapsulated class has only private data members which can only be accessed using getter & setter methods. 
+ * An encapsulated class has only private data members which can only be accessed using getter & setter methods.
+ * The private members of the base class cant be accessed by the derived class on inheritance. Thus data hiding is achieved.
+ * 
+ * The behaviour of the base class can be re-written. This is known as over-riding.
+ * Over-riding causes the method of the base class to be re-written in child class.
+ * '@Override' keyword has to be used to re-write.
+ * 
+ * Also, the method of the base class can be used in the derived class, using 'super' keyword.
+ * But use of 'super' is limited to call only the immediate base class
+ * 
  */
 
 
@@ -80,6 +87,7 @@ class DerivedClass extends BaseClass
 		 * ownership doesnt gaurantee 'right-to-access'
 		 * Direct access of variables inherited from parent class is not allowed*/
 		/*
+		 * 
 			System.out.println("Value of a is " + this.a); 
 		*/
 		
@@ -87,6 +95,11 @@ class DerivedClass extends BaseClass
 		System.out.println("Value of b is " + getB());
 		System.out.println("Value of c is " + this.c);
 		System.out.println("Value of d is " + this.d);
+		
+		/**
+		 * */
+		System.out.println("Using the print method of parent class");
+		super.print();
 	}
 	
 	/*
@@ -144,7 +157,6 @@ class AnotherChildClass //extends FinalBaseClass
 		System.out.println("Value of x is " + this.y);
 	}
 }
-
 
 
 public class Encapsulation {
