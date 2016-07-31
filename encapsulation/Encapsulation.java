@@ -75,6 +75,14 @@ class DerivedClass extends BaseClass
 	void print()
 	{
 		System.out.println("Print method of Child class");
+		
+		/* Though the child class has (owns) variables a & b, 
+		 * ownership doesnt gaurantee 'right-to-access'
+		 * Direct access of variables inherited from parent class is not allowed*/
+		/*
+			System.out.println("Value of a is " + this.a); 
+		*/
+		
 		System.out.println("Value of a is " + getA());
 		System.out.println("Value of b is " + getB());
 		System.out.println("Value of c is " + this.c);
