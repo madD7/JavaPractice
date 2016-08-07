@@ -6,7 +6,13 @@ package abstractclass;
  * This example is to demonstrate abstract class.
  * 
  * To define any abstract method in a class, the class must be abstract class.
+ * Abstract methods dont have body. But its body must be present in every child class that inherits parent class.
+ * 
+ * An abstract class that doesnt not have any abstract methods is complete class.
+ * 
  */
+
+
 
 // To define any abstract method in a class, the class must be abstract class
 // class Communication // is not valid. Reason stated in above line
@@ -23,10 +29,22 @@ abstract class Communication{
 		chnOpnFlg = flg;
 	}
 	
+	/**
+	 * Abstract methods doesnt have a body. But its body must be present in every child class that inherits parent class 
+	 */
 	abstract int openPort();
 	abstract int closePort();
 	abstract int transmitData(String data);
 	abstract int receiveData();
+}
+
+
+abstract class CompleteAbstract
+{
+	void hello()
+	{
+		System.out.println("Hello method of random abstract class");
+	}
 }
 
 
@@ -75,6 +93,7 @@ class EthernetPort extends Communication{
 		return rxbytes;
 	}
 }
+
 
 
 class SerialPort extends Communication{
@@ -131,7 +150,8 @@ public class AbstractClass {
 		
 		/**
 		 * Objects of abstract class cant be created.
-		 * Instance of an abstract class can be created. Thus handle of abstract class can be created.
+		 * However, Instance of an abstract class, whether complete or incomplete, can be created. 
+		 * Thus handle of abstract class can be created.
 		 * Hence, we say, "When we create object of a class, we are instantiating that class" 
 		 * */
 		Communication port;
@@ -140,6 +160,9 @@ public class AbstractClass {
 		
 		port = new EthernetPort();
 		sendData(port, "Hi");
+		
+		// Objects of a complete but abstract class cant be instantiated
+		// CompleteAbstract ab = new CompleteAbstract();
 	}
 	
 	private static int sendData(Communication p, String strdata)
