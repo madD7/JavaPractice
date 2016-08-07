@@ -161,8 +161,16 @@ public class AbstractClass {
 		port = new EthernetPort();
 		sendData(port, "Hi");
 		
-		// Objects of a complete but abstract class cant be instantiated
+		/* Objects of a complete but abstract class cant be instantiated */
 		// CompleteAbstract ab = new CompleteAbstract();
+		
+		/* This is not an instance of abstract class "CompleteAbstract"
+		 * Rather it is an instance of an anonymous subclass of "CompleteAbstract".
+		 * If this class was instantiated in a different java file, then a extra .class file will be created in the source folder.
+		 * This implies that a different class is being instantiated   
+		 * */ 
+		CompleteAbstract anonymous = new CompleteAbstract () {};
+		anonymous.hello();
 	}
 	
 	private static int sendData(Communication p, String strdata)
