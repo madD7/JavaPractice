@@ -34,8 +34,8 @@ import java.util.Collection;
 
 public class Theatre{
 	private final String name;
-	//private List<Seat> seats = new ArrayList<Seat>();
-	private Collection<Seat> seats = new ArrayList<Seat>();
+	private List<Seat> seats = new ArrayList<Seat>();
+	//private Collection<Seat> seats = new ArrayList<Seat>();
 
 	public Theatre(String name, int maxRows, int maxSeats){
 		this.name = name;
@@ -52,8 +52,17 @@ public class Theatre{
 	}
 
 	public boolean reserveSeat(String seatNumber){
-		Seat requestedSeat=null;
+		Seat requestedSeat = new Seat(seatNumber);
+		int seatFound = Collections.binarySearch(seats, requestedSeat, null);
 
+		if ( seatFound >= 0 ){
+			return seats.get(seatFound()).reserve();
+		}
+		
+		System.out.println("There is not seat " + seatNumber);
+		return false;
+		
+		/*
 		for ( Seat s: seats){
 			if( s.getSeatNumber().equals(seatNumber)){
 				requestedSeat = s;
@@ -67,6 +76,7 @@ public class Theatre{
 		}
 
 		return requestedSeat.reserve();
+		*/
 	}
 
 	// for Testing 
