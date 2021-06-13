@@ -77,12 +77,17 @@ public class Theatre{
 	}
 
 	// Private inner class Seat
-	private class Seat{
+	private class Seat implements Comparable<Seat>{
 		private String seatNumber;
 		private boolean reserve=false;
 
 		public Seat(String seatNumber){
 			this.seatNumber = seatNumber;
+		}
+
+		@Override
+		public int compareTo(Seat seat){
+			return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
 		}
 
 		public String getSeatNumber(){
