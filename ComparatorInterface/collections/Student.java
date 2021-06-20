@@ -61,6 +61,14 @@ public class Student implements Comparable <Student> {
         setBiologyScore(biologyScore);
 	}
 
+	public void setRollNo(int rollNo){
+		this.rollNo = rollNo;
+	}
+
+	public void setRank(int rank){
+		this.rank = rank;
+	}
+
 	public void setMathScore(int mathScore){
 		this.mathScore = mathScore;
 	}
@@ -78,36 +86,40 @@ public class Student implements Comparable <Student> {
 	}
 
 	public String getName(){
-		return this.name;
+		return name;
 	}
 
 	public int getRollNo(){
-		return this.rollNo;
+		return rollNo;
 	}
 
 	public int getRank(){
-		return this.rank;
+		return rank;
+	}
+
+	public int getMathScore(){
+		return mathScore;
 	}
 
 	public int getPhysicsScore(){
-        return this.physicsScore;
+        return physicsScore;
     }
 
     public int getChemistryScore(){
-        return this.chemistryScore;
+        return chemistryScore;
     }
 
     public int getBiologyScore(){
-        return this.biologyScore;
+        return biologyScore;
     }
 
 	@Override
 	public String toString(){
 		return (this.rollNo + ". #" + this.rank + " " + this.name + 
-				"score, Math[" + this.mathScore + 
+				" Scores: Math[" + this.mathScore + 
 				"] Physics[" + this.physicsScore + 
 				"] Chemistry[" + this.chemistryScore + 
-				"] Biology[" + this.biologyScore );
+				"] Biology[" + this.biologyScore +"]");
 	}
 
 	@Override
