@@ -38,6 +38,7 @@ public class Location{
 		this.description = description;
 
 		this.exits = new HashMap<String, Integer>();
+		exits.put("Q",0);
 	}
 
 	public int getLocationId(){
