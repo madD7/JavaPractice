@@ -79,6 +79,14 @@ public class Maps{
 			System.out.println("Key-value mismatch. GoLang not removed");
 		}
 
+		// Returns the old value of the key, whose value is to be replaced.
+		// Returns null if the key doesnt exists
+		System.out.println("Replacing value for key - C. Old value - " +
+								languages.replace("C", "Simplest, most basic language"));
+
+		System.out.println("Replacing value for HTML (key doesnt exists). Old value - " + 
+								languages.replace("HTML", "Hyper text markup language"));
+
 		System.out.println("\nPrinting all key-value pairs of the 'languages' map");
         for ( String key: languages.keySet() ){
             System.out.println(key + ": " + languages.get(key));
