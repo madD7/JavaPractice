@@ -9,7 +9,7 @@ Revision History ***************************************************************
 * DDMMYY * ** madD7 ** * Originator                                                       *
 
 */
-package AdventureGame;
+package AdventureGameWithVocabulary;
 
 
 /* Import Libraries **************************************************************************
@@ -71,29 +71,26 @@ public class Main{
 			}
 			System.out.println();
 
-			String[] inputLine = scanner.nextLine().split(" ");
-			String direction = "Q";
+			String direction = scanner.nextLine().toUpperCase();
 
-			for ( String str: inputLine){
-				if ( str.equalsIgnoreCase("East") || 
-						str.equalsIgnoreCase("E")){
-					direction = "E";
-					break;
-				} else if (str.equalsIgnoreCase("West") || 
-						str.equalsIgnoreCase("W")){
-					direction = "W";
-					break;
-				} else if (str.equalsIgnoreCase("North") || 
-						str.equalsIgnoreCase("N")){
-					direction = "N";
-					break;
-				}else if (str.equalsIgnoreCase("South") || 
-						str.equalsIgnoreCase("S") ){
-					direction = "S";
-					break;
+			if ( direction.length() > 1 ){
+				String[] words = direction.split(" ");
+
+				// Creating a Hash map of words 
+				Map<String, String> vocabulary = new HashMap<String, String>();
+				vocabulary.put("NORTH", "N");
+				vocabulary.put("WEST", "W");
+				vocabulary.put("EAST", "E");
+				vocabulary.put("SOUTH", "S");
+				vocabulary.put("QUIT", "Q");
+
+				for ( String word : words ){
+					if ( vocabulary.containsKey(word)){
+						direction = vocabulary.get(word);
+						break;
+					}
 				}
 			}
-			
 
 			if ( exits.containsKey(direction)){
 				loc = exits.get(direction);
