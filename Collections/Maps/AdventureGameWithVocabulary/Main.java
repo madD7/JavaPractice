@@ -55,6 +55,14 @@ public class Main{
 
 		locations.get(5).addExit("S",1);
         locations.get(5).addExit("W",2);
+		
+		// Creating a Hash map of words 
+		Map<String, String> vocabulary = new HashMap<String, String>();
+		vocabulary.put("NORTH", "N");
+		vocabulary.put("WEST", "W");
+		vocabulary.put("EAST", "E");
+		vocabulary.put("SOUTH", "S");
+		vocabulary.put("QUIT", "Q");
 
 		int loc=1;
 		while(true){
@@ -75,15 +83,7 @@ public class Main{
 
 			if ( direction.length() > 1 ){
 				String[] words = direction.split(" ");
-
-				// Creating a Hash map of words 
-				Map<String, String> vocabulary = new HashMap<String, String>();
-				vocabulary.put("NORTH", "N");
-				vocabulary.put("WEST", "W");
-				vocabulary.put("EAST", "E");
-				vocabulary.put("SOUTH", "S");
-				vocabulary.put("QUIT", "Q");
-
+				
 				for ( String word : words ){
 					if ( vocabulary.containsKey(word)){
 						direction = vocabulary.get(word);
