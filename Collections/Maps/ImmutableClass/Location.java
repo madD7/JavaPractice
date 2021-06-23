@@ -54,7 +54,9 @@ import java.util.HashMap;
 /* Functions ****************************************************************************** @{
  */
 
-public class Location{
+
+// Complies Note 3. 
+public final class Location{
 
 	// Complies with Note 2.
 	private final int locationId;
@@ -69,7 +71,11 @@ public class Location{
 		/* Compiles with Note 4.(ii) 
 		   Copy of the object is created and stored internally.
 		*/
-		this.exits = new HashMap<String, Integer>(tempExits);
+		if ( tempExits != null ){
+			this.exits = new HashMap<String, Integer>(tempExits);
+		}else{
+			this.exits = new HashMap<String, Integer>();
+		}
 		exits.put("Q",0);
 	}
 
