@@ -5,6 +5,9 @@
 Description   :
 				Example of an immutable class.
 
+
+				========== From oracle java docs 
+
 				To achieve Immutability:
 					1. Don't provide setter methods, to modify any fields or 
 						objects referred to, by fields.
@@ -22,6 +25,8 @@ Description   :
 							of copies.
 							Similarly create copies of the internal mutable objects when
 							necessary, avoid sharing and retruning original object.
+
+				=========
 
 				The above points are demonstrated in the below code, making the 
 				Location class immutable.
