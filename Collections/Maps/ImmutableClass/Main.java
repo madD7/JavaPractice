@@ -21,6 +21,11 @@ Description   :
 
 				In the following code example, Location class is immutable.
 
+				The location class is used in value (in the key-value pair) of the map and 
+				not as a key, if it is mutable.
+				
+				Thus, an immutable location class can also be used as key in the map.
+
 Revision History **************************************************************************
 ** Date ** ** Coder ** ***** Remarks ******************************************************
 * DDMMYY * ** madD7 ** * Originator                                                       *

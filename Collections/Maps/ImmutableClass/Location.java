@@ -61,6 +61,7 @@ public class Location{
 	private final String description;
 	private final Map<String, Integer> exits;
 
+	// if null is passed (tempExits = null), the constructor would crash
 	public Location(int locationId, String description, Map<String, Integer> tempExits){
 		this.locationId = locationId;
 		this.description = description;
