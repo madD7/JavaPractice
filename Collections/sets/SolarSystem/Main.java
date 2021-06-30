@@ -127,6 +127,25 @@ public class Main{
 		for ( HeavenlyBody m : allMoons){
 			System.out.println(m.getName());
 		}
+
+		/* Adding Pluto again. Without implementation of the equals method,
+		   it is possible to add 2 or more of same planet names as 
+		 demonstrated below */
+
+		temp = new HeavenlyBody("Pluto", 822);
+		solarSystem.put(temp.getName(), temp);
+		planets.add(temp);
+
+		System.out.println("Adding duplicate Pluto. The new solarSystem set is :");
+		for ( HeavenlyBody body : planets){
+            System.out.println("\t" + body.getName() + ".No of Earth days for 1 revolution - " + body.getOrbitalPeriod());
+
+            Set<HeavenlyBody> tempMoons = body.getSatellites();
+            for ( HeavenlyBody m : tempMoons){
+                System.out.println("\t\t" + m.getName());
+            }
+        }
+
 	}
 }
 /* @}
