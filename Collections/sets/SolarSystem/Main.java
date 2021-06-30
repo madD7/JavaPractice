@@ -9,6 +9,10 @@ Description   :
 
 				The map, solarSystem, consists of all the HeavenlyBody objects.
 
+				The method, addAll(Collection C) is used to add all the elements of
+				the Collection c (may be a set) into the new Set.
+					Eg: Refer Note 1.
+
 Revision History **************************************************************************
 ** Date ** ** Coder ** ***** Remarks ******************************************************
 * DDMMYY * ** madD7 ** * Originator                                                       *
@@ -51,6 +55,10 @@ public class Main{
 		planets.add(temp);
 
 		// Adding Moon to the Earth
+		/* There is only one instance of the Moon that is being added to 
+		   the solarSystem HashMap as well as to the satellite set of the 
+		   HeavenlyBody Earth
+		   */
 		HeavenlyBody moon = new HeavenlyBody("Moon", 27);
 		solarSystem.put(moon.getName(), moon);
 		temp.addMoon(moon);
@@ -105,6 +113,19 @@ public class Main{
 			for ( HeavenlyBody m : tempMoons){
 				System.out.println("\t\t" + m.getName());
 			}
+		}
+
+
+		System.out.println("Set of all the Moons");
+		Set<HeavenlyBody> allMoons = new HashSet<>();
+
+		// Note 1.
+		for ( HeavenlyBody p : planets){
+			allMoons.addAll(p.getSatellites());
+		}
+
+		for ( HeavenlyBody m : allMoons){
+			System.out.println(m.getName());
 		}
 	}
 }
