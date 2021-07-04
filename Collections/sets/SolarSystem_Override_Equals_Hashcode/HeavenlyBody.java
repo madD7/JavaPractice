@@ -49,6 +49,13 @@ Description   :
 					hashcode computation must be the subset of the fields used in the equals().
 
 				- Hashcode must not be used for mutable fields.
+					We know that the hashcode is used to determine the elements bucket.
+					If any field of a mutable object is changed, the hashcode will not 
+					be recomputed, internal bucket array will not be updated.
+					Thus, the check with the equals object or with same instance will fail,
+						coz the datastructure computes current hashcode different from the 
+						hashcode computed while instantiating the object, 
+						therefore looking into the wrong bucket during comparaision.
 
 
 Revision History **************************************************************************
@@ -147,6 +154,12 @@ public final class HeavenlyBody{
 		return this.name.equals(objName);
 	}
 
+
+	/* If all the instances of the object return the same hashcode, they will end up in 
+	   the same bucket. The contains method will thus trigger linear scan (of comparision
+	   with every other object) of the list. 
+	   In a collection with too many objects, this will result performance degradation.
+	   */
 	@Override
 	public int hashCode(){
 		return 0;
