@@ -31,8 +31,8 @@ Description   :
 				Hashcode can be assumed as an Integer value of the object.
 				Computing hashcode is like compressing equality to an Integer value.
 				Like equals, the hashcode is defined on object, ie. the object class has 
-				Hashcode [ equals(Object) ]. If we override the equals(Object) method, we MUST
-				override the Hashcode. 
+				Hashcode [ equals(Object) ]. If we Override the equals(Object) method, we MUST
+				Override the Hashcode. 
 
 				- Consistent
 					The Hashcode must return the same Integer value for multiple invocations
@@ -101,13 +101,14 @@ public final class HeavenlyBody{
 		return this.satellites.add(moon);
 	}
 
-	/* Without @override, we would be actually overloading the equals methods.
-	   We actually want to override equals method present in the Object parent class
+	/* Without @Override, we would be actually overloading the equals methods.
+	   We actually want to Override equals method present in the Object parent class
 	   and not overload equals(Object) i.e. we dont want to create 
 	   another method equals(HeavenlyBody) 
 	 */
-	@override
-	public boolean equals(HeavenlyBody obj){
+	@Override
+	// public boolean equals(HeavenlyBody obj)  // would be overloading and not overriding
+	public boolean equals(Object obj){
 		// self check
 		if ( this == obj ){
 			return true;
@@ -146,9 +147,9 @@ public final class HeavenlyBody{
 		return this.name.equals(objName);
 	}
 
-	@override
-	public int hashcode(HeavenlyBody obj){
-
+	@Override
+	public int hashCode(){
+		return 0;
 	}
 }
 /* @}
