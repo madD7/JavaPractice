@@ -162,8 +162,9 @@ public final class HeavenlyBody{
 	   */
 	@Override
 	public int hashCode(){
-		return 0;
+		return this.name.hashCode() + 7; // Adding some random number so that the hashcode is non-zero 
 	}
+
 }
 /* @}
  */
