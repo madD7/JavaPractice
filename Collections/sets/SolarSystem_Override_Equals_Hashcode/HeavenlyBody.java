@@ -143,7 +143,9 @@ public final class HeavenlyBody{
 			else 
 				false;
 			
-			We choose to implement getClass comparision
+			We choose to implement getClass comparision.
+			However, it is unnecessary as the HeavenlyBody class is FINAL.
+			Thus it cannot be subclassed.
 		 */
 		if ( obj.getClass() != this.getClass() ){
 			return false;
