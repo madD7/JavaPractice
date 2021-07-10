@@ -79,8 +79,9 @@ public class Main{
 
 		System.out.println("\n\nThe order of the words will not be maintained in the set");
 		for ( String s: wordSet ){
-			System.out.println(s);
+			System.out.print(s + " ");
 		}
+		System.out.println();
 
 		// Asymmetric difference
 		String thought1 = "All Nature is the art of unknown to thee";
@@ -98,17 +99,41 @@ public class Main{
 		asymmetry1.removeAll(thought2Set);
 		System.out.println("Printing thought1Set.removeAll(thought2Set) ");
 		for ( String s: asymmetry1){
-			System.out.println(s);
+			System.out.print(s + " ");
 		}
+		System.out.println();
 
 		Set<String> asymmetry2 = new HashSet<>();
 		asymmetry2.addAll(thought2Set);
 		asymmetry2.removeAll(thought1Set);
 		System.out.println("Printing thought2Set.removeAll(thought1Set) ");
 		for ( String s: asymmetry2 ){
-			System.out.println(s);
+			System.out.print(s + " ");
 		}
+		System.out.println();
 
+		/* Symmetric difference = Union - Intersection 
+		 */
+		System.out.println("Symmetric difference = Union - Intersection");
+		Set<String> symmetry = new HashSet<>();
+		symmetry.addAll(thought1Set);
+		symmetry.addAll(thought2Set);
+
+		Set<String> intersect = new HashSet<>();
+		intersect.addAll(thought1Set);
+		intersect.retainAll(thought2Set);
+
+		symmetry.removeAll(intersect);
+
+		for ( String s: symmetry ){
+            System.out.print(s+ " ");
+        }
+		System.out.println();
+
+		/*	set1.containsAll(set2) check if set2 contains all elements of set1
+			containsAll is a non destructive call
+		*/
+		System.out.println("asymmetry2 set is subset of thought2Set. " + thought2Set.containsAll(asymmetry2));
 	}
 }
 /* @}
