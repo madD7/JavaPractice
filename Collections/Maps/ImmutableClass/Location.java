@@ -13,9 +13,9 @@ Description   :
 						objects referred to, by fields.
 					2. Make fields final and private.
 					3. Don't allow subclass to override methods. Simplest way to achieve 
-						this is to make the class final. A MORE SOPHISTICATED APPROACH IS 
-						TO MAKE CONSTRUCTOR PRIVATE AND CONSTRUCT INSTANCES IN FACTORY
-						METHOD.
+						this is to make the methods of the class final. 
+						A MORE SOPHISTICATED APPROACH IS TO MAKE CONSTRUCTOR 
+						PRIVATE AND CONSTRUCT INSTANCES IN FACTORY METHOD.
 					4. If instance fields include referrence to mutable objects, don't 
 						allow those objects to be changed. 
 						i.	Don't provide methods that modify mutable objects.
