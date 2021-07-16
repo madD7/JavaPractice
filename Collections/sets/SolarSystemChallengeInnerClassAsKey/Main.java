@@ -19,7 +19,7 @@ Revision History ***************************************************************
 
 */
 
-package SolarSystemChallenge;
+package SolarSystemChallengeInnerClassAsKey;
 
 /* Import Libraries **************************************************************************
  * @{
@@ -38,22 +38,20 @@ import java.util.HashSet;
  */
 
 public class Main{
-
-	// A Map of HeavenlyBody type doesnt take into account the BodyType.
-	private static Map<String, HeavenlyBody> solarSystem = new HashMap<>();
+	private static Map<HeavenlyBody.Key, HeavenlyBody> solarSystem = new HashMap<>();
 	private static Set<HeavenlyBody> planets = new HashSet<>();
 
 	public static void main(String[] args){
 		HeavenlyBody temp = new Planet("Mercury", 88);
-		solarSystem.put(temp.getName(), temp);
+		solarSystem.put(temp.getKey(), temp);
 		planets.add(temp); 
 		
 		temp = new Planet("Venus", 225);
-		solarSystem.put(temp.getName(), temp);
+		solarSystem.put(temp.getKey(), temp);
 		planets.add(temp); 
 
 		temp = new Planet("Earth", 365);
-		solarSystem.put(temp.getName(), temp);
+		solarSystem.put(temp.getKey(), temp);
 		planets.add(temp);
 
 		// Adding Moon to the Earth
@@ -62,58 +60,58 @@ public class Main{
 		   HeavenlyBody Earth
 		   */
 		HeavenlyBody moon = new Moon("Moon", 27);
-		solarSystem.put(moon.getName(), moon);
+		solarSystem.put(moon.getKey(), moon);
 		temp.addSatellite(moon);
 
 		temp = new Planet("Mars", 687);
-        solarSystem.put(temp.getName(), temp);
+        solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 	
 		// Adding moons to the Mars
 		moon = new Moon("Deimos", 1.3);
-		solarSystem.put(moon.getName(), moon);
+		solarSystem.put(moon.getKey(), moon);
 		temp.addSatellite(moon);
 
 		moon = new Moon("Phobos", 0.3);
-		solarSystem.put(moon.getName(), moon);
+		solarSystem.put(moon.getKey(), moon);
 		temp.addSatellite(moon);
 
 		temp = new Planet("Jupiter", 4333);
-        solarSystem.put(temp.getName(), temp);
+        solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 
 		// Adding moon to Jupiter
 		moon = new Moon("I0", 1.8);
-		solarSystem.put(moon.getName(), moon);
+		solarSystem.put(moon.getKey(), moon);
 		temp.addSatellite(moon);
 
 		moon = new Moon("Eurpoa", 3.5);
-		solarSystem.put(moon.getName(), moon);
+		solarSystem.put(moon.getKey(), moon);
 		temp.addSatellite(moon);
 
 		temp = new Planet("Saturn", 10759);
-        solarSystem.put(temp.getName(), temp);
+        solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 
 		temp = new Planet("Uranus", 30687);
-        solarSystem.put(temp.getName(), temp);
+        solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 
 		temp = new Planet("Neptune", 60190);
-        solarSystem.put(temp.getName(), temp);
+        solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 
 		temp = new DwarfPlanet("Pluto", 248);
-		solarSystem.put(temp.getName(), temp);
+		solarSystem.put(temp.getKey(), temp);
 		planets.add(temp);
 
 		System.out.println("A set doesnt maintain order of entries.\nSet of Planets with their moons:");
 		for ( HeavenlyBody body : planets){
-			System.out.println("\t" + body.getName());
+			System.out.println("\t" + body.toString());
 			
 			Set<HeavenlyBody> tempMoons = body.getSatellites();
 			for ( HeavenlyBody m : tempMoons){
-				System.out.println("\t\t" + m.getName());
+				System.out.println("\t\t" + m.toString());
 			}
 		}
 
@@ -127,7 +125,7 @@ public class Main{
 		}
 
 		for ( HeavenlyBody m : allMoons){
-			System.out.println(m.getName());
+			System.out.println(m.toString());
 		}
 
 		/* Adding Pluto again. Without implementation of the equals method,
@@ -135,7 +133,7 @@ public class Main{
 		 demonstrated below */
 
 		temp = new Planet("Pluto", 822);
-		solarSystem.put(temp.getName(), temp);
+		solarSystem.put(temp.getKey(), temp);
 		planets.add(temp);
 
 		System.out.println("Adding duplicate Pluto. The new solarSystem set is :");
@@ -148,6 +146,12 @@ public class Main{
             }
         }
 
+		/*
+			Remember, if you print any object, the java compiler internally invokes the toString()
+			method on Object.
+		   */
+		System.out.println(solarSystem.get(HeavenlyBody.makeKey("Pluto", HeavenlyBody.BodyTypes.PLANET)));
+		System.out.println(solarSystem.get(HeavenlyBody.makeKey("Pluto", HeavenlyBody.BodyTypes.DWARF_PLANET)));
 	}
 }
 /* @}
