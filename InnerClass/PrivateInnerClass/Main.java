@@ -41,8 +41,7 @@ public class Main{
 		*/
 		Quadrilateral.Vertex quad0Vertex0 = quad1.getFirstVertex();
 		System.out.println(quad0Vertex0.toString());
-
-		
+	
 		System.out.println("\nDefining Quad1");
 		quad1 = new Quadrilateral("Quad1");
 
@@ -75,13 +74,15 @@ public class Main{
 
         quad1.printVertices();
 
-		System.out.println("Now, taking the reference of the non-static outer class object" + 
+		if ( quad0Vertex0 != null ){
+			System.out.println("Now, taking the reference of the non-static outer class object" + 
 							"\nfrom the non-static inner class object. Printing all its vertices");
-		/* This demonstrates that the reference of the non-static outerclass can be 
-		   accessed from the non-static inner class.
-		 */
-		quad1 = quad0Vertex0.getOuterClass();
-		quad1.printVertices();
+			/* This demonstrates that the reference of the non-static outerclass can be 
+			   accessed from the non-static inner class.
+		 	*/
+			quad1 = quad0Vertex0.getOuterClass();
+			quad1.printVertices();
+		}
 
 	}
 }
