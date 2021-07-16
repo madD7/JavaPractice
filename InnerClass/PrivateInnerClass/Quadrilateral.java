@@ -55,6 +55,14 @@ public class Quadrilateral{
 		return true;
 	}
 
+	public Vertex getFirstVertex(){
+		if ( vertices.isEmpty() ){
+			return null;
+		}
+
+		return vertices.get(0);
+	}
+
 	public boolean addVertex(int x, int y){
 		if (  vertices.size() >= this.maxVertices  ) {
 			System.out.println("All vertices are already defined");
@@ -115,7 +123,7 @@ public class Quadrilateral{
 	}
 	
 	// Private inner class
-	private class Vertex{
+	public class Vertex{
 		private int x;
 		private int y;
 		
@@ -130,6 +138,17 @@ public class Quadrilateral{
 
 		public int getPointY(){
 			return this.y;
+		}
+
+		/*
+			The non-static inner class returns the reference to the non-static outer class.
+			If the inner class is static, it will not be able to hold the reference to 
+			the non-static outer class. 
+			Thus compiling the following method will generate error if the Vertex class is
+			made static.
+		*/
+		public Quadrilateral getOuterClass(){
+			return Quadrilateral.this;
 		}
 
 		@Override
